@@ -55,15 +55,12 @@ frontend {{ frontend.name }}
         redirect scheme https code 301 if !{ ssl_fc }
 {% endif %}
 {% endif %}
-
 {% for site in frontend.sites %} 
         acl domain_{{ site.name }} hdr(host) -i {{ site.fqdn }}
 {% endfor %}
-
 {% for site in frontend.sites %} 
         use_backend {{ site.name }}_backend if domain_{{ site.name }}
 {% endfor %}
-
 
 {% for site in frontend.sites %} 
 backend {{ site.name }}_backend
