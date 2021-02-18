@@ -13,15 +13,16 @@ Role Variables
 
 All variables are contained in `haproxy_frontends` which is the list of frontends. Each frontend has the following variables:
 
-| Variable         | Required | Default | Description                                                     |
-|------------------|----------|---------|-----------------------------------------------------------------|
-| `name`           | yes      |         | the name of the frontend                                        |
-| `bind`           | no       | `'*'`   | the bind address the frontend should listen to                  |
-| `http`           | no       | True    | Should the frontend respond to HTTP requests?                   |
-| `https`          | no       | True    | Should the frontend respond to HTTPS requests?                  |
-| `https_redirect` | no       | True    | Should HTTP be redirected to HTTPS?                             |
-| `crt_list`       | yes      |         | the path to the file containing a list of paths to certificates |
-| `sites`          | yes      |         | the list of sites to be served by the frontend                  |
+| Variable          | Required | Default | Description                                                     |
+|-------------------|----------|---------|-----------------------------------------------------------------|
+| `name`            | yes      |         | the name of the frontend                                        |
+| `bind`            | no       | `'*'`   | the bind address the frontend should listen to                  |
+| `http`            | no       | True    | Should the frontend respond to HTTP requests?                   |
+| `https`           | no       | False   | Should the frontend respond to HTTPS requests?                  |
+| `https_redirect`  | no       | True    | Should HTTP be redirected to HTTPS? Ignored if `https` is false |
+| `host_strip_port` | no       | True    | Should port number be striped from `Host` header?               |
+| `crt_list`        | yes      |         | the path to the file containing a list of paths to certificates |
+| `sites`           | yes      |         | the list of backends to be served by the frontend               |
 
 Each site has the following variables which are all required:
 

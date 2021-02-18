@@ -55,6 +55,9 @@ frontend {{ frontend.name }}
         redirect scheme https code 301 if !{ ssl_fc }
 {% endif %}
 {% endif %}
+{% if frontend.host_strip_port | default(true) %}
+        http-request replace-header Host ([^:]+) \1
+{% endif %}
 {% for site in frontend.sites %} 
         acl domain_{{ site.name }} hdr(host) -i {{ site.fqdn }}
 {% endfor %}
