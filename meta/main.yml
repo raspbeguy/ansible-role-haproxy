@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: haproxy
   author: raspbeguy
   description: Minimalist role to deploy and manage HAproxy
 
@@ -40,7 +41,7 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - 10
+        - buster
 
   galaxy_tags:
     - proxy
